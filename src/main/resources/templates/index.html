@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Focus - Bootstrap Admin Dashboard</title>
+
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/focus/images/favicon.png">
+<link href="/focus/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+<link href="/focus/css/style.css" rel="stylesheet">
+
+<!-- 2021.08.30. kms 아이콘 사용 위해 fontawesome5 추가 -->
+<link href="/vendor/fontawesome-free-5.15.4-web/css/all.min.css"
+	rel="stylesheet">
+
+<!-- AX5 grid -->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/ax5ui-grid-master/dist/ax5grid.css" />
+
+<!-- sweetalert -->
+<link rel="stylesheet" type="text/css" href="styles/sweetalert2.css">
+<style>
+h3 {
+	display: block;
+	font-size: 1.5em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+	<!--*******************
+        Preloader start
+    ********************-->
+	<div id="preloader">
+		<div class="sk-three-bounce">
+			<div class="sk-child sk-bounce1"></div>
+			<div class="sk-child sk-bounce2"></div>
+			<div class="sk-child sk-bounce3"></div>
+		</div>
+	</div>
+	<!--*******************
+        Preloader end
+    ********************-->
+
+
+	<!--**********************************
+        Main wrapper start
+    ***********************************-->
+	<div id="main-wrapper">
+
+		<!--**********************************
+            Nav header start
+        ***********************************-->
+
+		<div th:replace="fragments/fragment-nav-header.html :: nav-header"></div>
+
+		<!--**********************************
+            Nav header end
+        ***********************************-->
+
+		<!--**********************************
+            Header start
+        ***********************************-->
+
+		<div th:replace="fragments/fragment-header.html :: header"></div>
+		<div th:replace="fragments/fragment-common.html :: common"></div>
+
+
+		<!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+		<!--**********************************
+            Sidebar start
+        ***********************************-->
+
+		<div th:replace="fragments/fragment-sidebar.html :: sidebar"></div>
+
+		<!--**********************************
+            Sidebar end
+        ***********************************-->
+
+		<!--**********************************
+            Content body start
+        ***********************************-->
+		<div class="content-body">
+			<!-- row -->
+			<div class="container-fluid">
+				<!-- Headings-->
+				<div class="panel panel-warning">
+					<div class="card">
+						<div class="card-header">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-lg-12">
+										<!-- <h1><b th:text="#{navigation.monitoring}" title="tooltips">설비 모니터링</b></h1> -->
+										<h1>
+											<b th:text="#{navigation.monitoring}" title="tooltips">설비
+												모니터링</b>
+										</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card-body">
+							<!-- ## panel body start ## -->
+							<div class="panel-body">
+
+								<!-- ## 네비게이션 2줄 중 두번째 라인 작업 시작 ## -->
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text">공장</span> <select
+													class="form-control" id="selFactory"
+													onchange="searchAreaList()">
+													<option th:each="f: ${factoryList}"
+														th:value="${f.factoryId}" th:text="${f.factoryName}"></option>
+												</select> <span class="input-group-text">구역</span> <select
+													class="form-control" id="selArea">
+													<option value="">-전체-</option>
+													<option th:each="a: ${areaList}" th:value="${a.areaId}"
+														th:text="${a.areaName}"></option>
+												</select> <span class="input-group-text" style="font-size: 85%;">기계상태</span>
+												<select class="form-control" id="selMachineStatusType">
+													<option value="">-전체-</option>
+													<option th:each="mt: ${machineStatusTypeList}"
+														th:value="${mt.code}" th:text="${mt.text}"></option>
+												</select> <span class="input-group-text" style="font-size: 85%;">경고상태</span>
+												<select class="form-control" id="selWarnStatus">
+													<option value="">-전체-</option>
+													<option th:each="w: ${warnStatusList}" th:value="${w.code}"
+														th:text="${w.text}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- ## 네비게이션 2줄 중 첫번째 라인 작업 종료 ## -->
+
+								<!-- ## 네비게이션 2줄 중 두번째 라인 작업 시작 ## -->
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text">기계명</span> <input type="text"
+													class="form-control" id="machineName"
+													placeholder="기계명을 입력하세요.">
+
+												<button class="btn btn-outline-dark" type="button"
+													onclick="searchMachineList()">
+													<i class="fa fa-search"></i>
+												</button>
+
+												<span class="input-group-text"
+													style="display: inline-block; width: 400px;">누적조회시간</span>
+												<select class="form-control" id="selAccumulSearchTime">
+													<option value="6">6H</option>
+													<option value="12">12H</option>
+													<option value="24">24H</option>
+												</select> <label class="input-group-text"
+													style="display: inline-block; width: 400px;"><input
+													type="checkbox" id="reflechChk" checked="checked"
+													onclick="refIntervalChange()">&nbsp&nbsp&nbsp자동조회</label> <input
+													type="number" class="form-control" id="refMin" min="1"
+													value="1" onchange="refIntervalChange()" max="9999"
+													maxlength="4" oninput="maxLengthCheck(this)">
+											</div>
+
+
+											<span class="input-group-btn">
+												<button class="btn btn-outline-light" type="button"
+													onclick="changeRefType()" id="refType" value="min">분</button>
+											</span> <span class="input-group-btn">
+												<button class="btn btn-info" type="button"
+													onclick="gridHighLow('minus')">
+													<i class="fa fa-minus"></i>
+												</button>
+											</span> <span class="input-group-btn">
+												<button class="btn btn-danger" type="button"
+													onclick="gridHighLow('plus')">
+													<i class="fa fa-plus"></i>
+												</button>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12">
+										<div data-ax5grid="machineList-grid"
+											data-ax5grid-config='{name:"machineList grid"}'
+											style="height: 600px;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ## 네비게이션 2줄 중 두번째 라인 작업 종료 ## -->
+						<!-- ## panel body end ## -->
+					</div>
+
+
+
+
+
+
+				</div>
+			</div>
+		</div>
+		<!--**********************************
+            Content body end
+        ***********************************-->
+
+
+		<!--**********************************
+            Footer start
+        ***********************************-->
+
+		<div th:replace="fragments/fragment-footer.html :: footer"></div>
+
+		<!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+	</div>
+
+	<!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+	<!--**********************************
+        Scripts
+    ***********************************-->
+	<!-- Required vendors -->
+	<script src="/focus/vendor/global/global.min.js"></script>
+	<script src="/focus/js/quixnav-init.js"></script>
+	<script src="/focus/js/custom.min.js"></script>
+
+	<!-- 2021.08.30. kms 설비모니터링 관련 추가 -->
+	<script type="text/javascript"
+		src="/vendor/ax5core-master/dist/ax5core.min.js"></script>
+	<script type="text/javascript"
+		src="/vendor/ax5ui-grid-master/dist/ax5grid.min.js"></script>
+	<script src="/scripts/jquery.i18n.properties.js"></script>
+
+	<!-- sweetalert -->
+	<script src="scripts/sweetalert2.min.js"></script>
+
+	<script src="scripts/qgMonitoring.js"></script>
+	<!-- 회원정보 변경 등 -->
+	<script src="scripts/common.js"></script>
+</body>
+</html>

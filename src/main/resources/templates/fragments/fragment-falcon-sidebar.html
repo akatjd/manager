@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<nav th:fragment="sidebar"
+		class="navbar navbar-light navbar-vertical navbar-expand-xl">
+		<script>
+			var navbarStyle = localStorage.getItem("navbarStyle");
+			if (navbarStyle && navbarStyle !== 'transparent') {
+				document.querySelector('.navbar-vertical').classList
+						.add(`navbar-${navbarStyle}`);
+			}
+		</script>
+		<div class="d-flex align-items-center">
+			<div class="toggle-icon-wrapper">
+				<button
+					class="btn navbar-toggler-humburger-icon navbar-vertical-toggle"
+					data-bs-toggle="tooltip" data-bs-placement="left"
+					title="Toggle Navigation">
+					<span class="navbar-toggle-icon"><span class="toggle-line"></span></span>
+				</button>
+			</div>
+			<a class="navbar-brand" href="#"> <!-- 					<div class="d-flex align-items-center py-3"> -->
+				<!-- 						<img class="me-2" --> <!-- 							src="../falcon/assets/img/icons/spot-illustrations/img-tachyontech.png" alt="" -->
+				<!-- 							width="40" /><span class="font-sans-serif"></span> --> <!-- 					</div> -->
+				<img
+				src="../falcon/assets/img/icons/spot-illustrations/img-tachyontech.png"
+				alt="" width="180" />
+			</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+			<div class="navbar-vertical-content scrollbar">
+				<ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+					<li class="nav-item">
+						<!-- label-->
+						<div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+							<div class="col-auto navbar-vertical-label">Main menu</div>
+							<div class="col ps-0">
+								<hr class="mb-0 navbar-vertical-divider" />
+							</div>
+						</div> <!-- parent pages--> <a class="nav-link dropdown-indicator"
+						href="#machineMenu" role="button" data-bs-toggle="collapse"
+						aria-expanded="false" aria-controls="customization">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><span class="fas fa-wrench"></span></span><span
+									class="nav-link-text ps-1">설비 메뉴</span>
+							</div>
+					</a>
+						<ul class="nav collapse show" id="machineMenu">
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgMonitoring}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">설비 모니터링</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgCt}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">사이클 타임</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgToolChangeCnt}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">공구 교환 횟수</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgToolLife}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">공구 수명</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgToolChangeTime}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">공구 교환 시간</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgProgramCnt}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">프로그램 수정 횟수</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgTemperature}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">설비 온도</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgAutoUse}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">무인 가동</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgStopCnt}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">알람 정지 횟수</span>
+									</div>
+							</a>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgAlarm}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">알람</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgAlarmHistory}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">알람이력</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+						</ul> <!-- parent pages--> <a class="nav-link dropdown-indicator"
+						href="#schedulePolicy" role="button" data-bs-toggle="collapse"
+						aria-expanded="false" aria-controls="email">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><span
+									class="fas fa-calendar-alt"></span></span><span
+									class="nav-link-text ps-1">스케줄 정책</span>
+							</div>
+					</a>
+						<ul class="nav collapse show" id="schedulePolicy">
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgSchedule}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">주, 야간 스케줄</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgDowntimeSchedule}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">비가동 스케줄</span>
+									</div>
+							</a></li>
+						</ul> <!-- parent pages--> <a class="nav-link dropdown-indicator"
+						href="#machineSetting" role="button" data-bs-toggle="collapse"
+						aria-expanded="false" aria-controls="email">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><span class="far fa-sun"></span></span><span
+									class="nav-link-text ps-1">설비 정책</span>
+							</div>
+					</a>
+						<ul class="nav collapse show" id="machineSetting">
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgProductSetting}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">제품 관리</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/main/qgToolSetting}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">공구 관리</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+						</ul>
+						<div th:if="${session.account.role == 'ROLE_ADMIN'}"
+							class="row navbar-vertical-label-wrapper mt-3 mb-2">
+							<div class="col-auto navbar-vertical-label">Admin menu</div>
+							<div class="col ps-0">
+								<hr class="mb-0 navbar-vertical-divider" />
+							</div>
+						</div> <a th:if="${session.account.role == 'ROLE_ADMIN'}"
+						class="nav-link dropdown-indicator" href="#administration"
+						role="button" data-bs-toggle="collapse" aria-expanded="false"
+						aria-controls="administration">
+							<div class="d-flex align-items-center">
+								<span class="nav-link-icon"><span class="fab fa-whmcs"></span></span><span
+									class="nav-link-text ps-1">관리자 메뉴</span>
+							</div>
+					</a>
+						<ul th:if="${session.account.role == 'ROLE_ADMIN'}"
+							class="nav collapse show" id="administration">
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/admin/getUsersView}" aria-expanded="false">
+									<div class="d-flex align-items-center">
+										<span class="nav-link-text ps-1">사용자 관리</span>
+									</div>
+							</a> <!-- more inner pages--></li>
+							<!-- 							<li class="nav-item"><a class="nav-link" -->
+							<!-- 								th:href="@{/admin/getUsersView2}" aria-expanded="false"> -->
+							<!-- 									<div class="d-flex align-items-center"> -->
+							<!-- 										<span class="nav-link-text ps-1">사용자 관리22</span> -->
+							<!-- 									</div> -->
+							<!-- 							</a> more inner pages</li> -->
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</body>
+</html>

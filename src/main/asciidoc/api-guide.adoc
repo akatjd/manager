@@ -1,0 +1,27 @@
+= QG manager 외부 REST API
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+== 알람 이력 조회 [get]
+
+=== 요청 구조 및 예시
+
+include::{snippets}/alarm-history-get/curl-request.adoc[]
+
+include::{snippets}/alarm-history-get/http-request.adoc[]
+
+==== 요청 파라미터
+
+include::{snippets}/alarm-history-get/path-parameters.adoc[]
+
+=== 응답 구조
+
+include::{snippets}/alarm-history-get/http-response.adoc[]
+
+==== 응답 파라미터들
+
+include::{snippets}/alarm-history-get/response-fields.adoc[]

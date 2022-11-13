@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- ===============================================-->
+<!--    Document Title-->
+<!-- ===============================================-->
+<title>Qg | Manager</title>
+
+
+<!-- ===============================================-->
+<!--    Favicons-->
+<!-- ===============================================-->
+<!-- <link rel="apple-touch-icon" sizes="180x180" -->
+<!-- 	href="../falcon/assets/img/favicons/apple-touch-icon.png"> -->
+<!-- <link rel="icon" type="image/png" sizes="32x32" -->
+<!-- 	href="../falcon/assets/img/favicons/favicon-32x32.png"> -->
+<!-- <link rel="icon" type="image/png" sizes="16x16" -->
+<!-- 	href="../falcon/assets/img/favicons/favicon-16x16.png"> -->
+<link rel="icon" type="image/png" sizes="16x16"
+	href="../falcon/assets/img/favicons/img-qg-icon.ico">
+<!-- <link rel="shortcut icon" type="image/x-icon" -->
+<!-- 	href="../falcon/assets/img/favicons/favicon.ico"> -->
+<!-- <link rel="manifest" href="../falcon/assets/img/favicons/manifest.json"> -->
+<!-- <meta name="msapplication-TileImage" -->
+<!-- 	content="../falcon/assets/img/favicons/mstile-150x150.png"> -->
+<meta name="theme-color" content="#ffffff">
+<script src="../falcon/assets/js/config.js"></script>
+<script
+	src="../falcon/vendors/overlayscrollbars/OverlayScrollbars.min.js"></script>
+
+
+<!-- ===============================================-->
+<!--    Stylesheets-->
+<!-- ===============================================-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
+	rel="stylesheet">
+<link
+	href="../falcon/vendors/overlayscrollbars/OverlayScrollbars.min.css"
+	rel="stylesheet">
+<link href="../falcon/assets/css/theme-rtl.min.css" rel="stylesheet"
+	id="style-rtl">
+<link href="../falcon/assets/css/theme.min.css" rel="stylesheet"
+	id="style-default">
+<link href="../falcon/assets/css/user-rtl.min.css" rel="stylesheet"
+	id="user-style-rtl">
+<link href="../falcon/assets/css/user.min.css" rel="stylesheet"
+	id="user-style-default">
+<script>
+	var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+	if (isRTL) {
+		var linkDefault = document.getElementById('style-default');
+		var userLinkDefault = document.getElementById('user-style-default');
+		linkDefault.setAttribute('disabled', true);
+		userLinkDefault.setAttribute('disabled', true);
+		document.querySelector('html').setAttribute('dir', 'rtl');
+	} else {
+		var linkRTL = document.getElementById('style-rtl');
+		var userLinkRTL = document.getElementById('user-style-rtl');
+		linkRTL.setAttribute('disabled', true);
+		userLinkRTL.setAttribute('disabled', true);
+	}
+</script>
+</head>
+
+
+<body>
+
+	<!-- ===============================================-->
+	<!--    Main Content-->
+	<!-- ===============================================-->
+	<main class="main" id="top">
+		<div class="container" data-layout="container">
+			<script>
+				var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+				if (isFluid) {
+					var container = document.querySelector('[data-layout]');
+					container.classList.remove('container');
+					container.classList.add('container-fluid');
+				}
+			</script>
+			<div class="row flex-center min-vh-100 py-6">
+				<div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+					<!-- 					<a class="d-flex flex-center mb-4" href="#"><img -->
+					<!-- 						class="me-2" -->
+					<!-- 						src="../falcon/assets/img/icons/spot-illustrations/falcon.png" alt="" -->
+					<!-- 						width="58" /><span -->
+					<!-- 						class="font-sans-serif fw-bolder fs-5 d-inline-block">falcon</span></a> -->
+					<a class="d-flex flex-center mb-4" href="#"><img class="me-2"
+						src="../falcon/assets/img/icons/spot-illustrations/img-tachyontech.png"
+						alt="" width="250" /></a>
+					<div class="card">
+						<div class="card-body p-4 p-sm-5">
+							<div class="row flex-between-center mb-2">
+								<h5 align="center">로그인을 해주세요</h5>
+								<p align="center">Quality Guard Administrator</p>
+
+								<div th:if="${param.error}">
+									<div th:if="${param.error[0] == '1130'}">
+										<p class="text-danger" th:text="#{login.loginFailMsg}"
+											align="center">로그인에 실패하였습니다. 아이디와 패스워드를 확인하세요.</p>
+									</div>
+									<div th:if="${param.error[0] == '1131'}">
+										<p class="text-danger" th:text="#{login.loginFailMsg}"
+											align="center">로그인에 실패하였습니다. 아이디와 패스워드를 확인하세요.</p>
+									</div>
+									<div th:if="${param.error[0] == '1132'}">
+										<p class="text-danger" th:text="#{login.disapprovalMsg}"
+											align="center">승인되지 않은 아이디 입니다. 관리자에게 문의 하세요.</p>
+									</div>
+								</div>
+
+							</div>
+							<form th:action="@{/main/login}" id="loginForm" method="post">
+								<div class="mb-3">
+									<input class="form-control" type="text"
+										placeholder="Email address" name="userId" id="userId" />
+								</div>
+								<div class="mb-3">
+									<input class="form-control" type="password"
+										placeholder="Password" name="password" id="password" />
+								</div>
+								<div class="row flex-between-center">
+									<div class="col-auto">
+										<div class="form-check mb-0">
+											<input class="form-check-input" type="checkbox"
+												id="idSaveCheck" checked="checked" /> <label
+												class="form-check-label mb-0" for="basic-checkbox">아이디
+												저장</label>
+										</div>
+
+
+										<!-- 										<div class="checkbox"> -->
+										<!-- 			                                <label class="checkbox-inline" style="padding-left: 0px"><input type="checkbox" id="idSaveCheck" class="i-checks"/><span th:text="#{login.rememberId}"></span></label> -->
+										<!-- 			                            </div> -->
+
+
+									</div>
+									<!-- 									<div class="col-auto"> -->
+									<!-- 										<a class="fs--1" -->
+									<!-- 											href="../falcon/pages/authentication/simple/forgot-password.html">비밀번호 -->
+									<!-- 											찾기</a> -->
+									<!-- 									</div> -->
+								</div>
+								<div class="mb-3">
+									<button class="btn btn-primary d-block w-100 mt-3"
+										type="submit" name="submit" id="loginBtn"
+										onclick="loginProcess();">로그인</button>
+								</div>
+							</form>
+							<div class="mb-3">
+								<button class="btn btn-outline-primary d-block w-100 mt-3"
+									th:onclick="'location.href=\'' + @{/signUp/signUpView} + '\';'"
+									name="submit">회원가입</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- ===============================================-->
+	<!--    End of Main Content-->
+	<!-- ===============================================-->
+
+	<!-- ===============================================-->
+	<!--    JavaScripts-->
+	<!-- ===============================================-->
+	<script src="../falcon/vendors/popper/popper.min.js"></script>
+	<script src="../falcon/vendors/bootstrap/bootstrap.min.js"></script>
+	<script src="../falcon/vendors/anchorjs/anchor.min.js"></script>
+	<script src="../falcon/vendors/is/is.min.js"></script>
+	<script src="../falcon/vendors/fontawesome/all.min.js"></script>
+	<script src="../falcon/vendors/lodash/lodash.min.js"></script>
+	<script
+		src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+	<script src="../falcon/vendors/list.js/list.min.js"></script>
+	<script src="../falcon/assets/js/theme.js"></script>
+
+	<!-- jquery, jquery cookie, icheck -->
+	<script src="/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="/scripts/jquery.cookie.js"></script>
+	<script src="/vendor/iCheck/icheck.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var mail = getCookie("UserId");
+			var pwd = getCookie("Password");
+			if (mail) {
+				$("#userId").val(mail);
+				$("#password").val(pwd);
+				$("#idSaveCheck").attr("checked", true);
+			}
+		});
+		function loginProcess() {
+			var id = $("#userId").val();
+			var pwd = $("#password").val();
+			var idChk = $("#idSaveCheck").is(":checked");
+			if (id == "") {
+				alert("Enter mail");
+				$("#userId").focus();
+				return false;
+			} else if (pwd == "") {
+				alert("Enter password");
+				$("#password").focus();
+				return false;
+			} else if (idChk) {
+				setCookie("UserId", id, 7);
+				setCookie("Password", pwd, 7);
+			} else {
+				deleteCookie("UserId");
+				deleteCookie("Password");
+			}
+			$("#loginForm").submit();
+		};
+		function setCookie(cookieName, value, exdays) {
+			var exdate = new Date();
+			exdate.setDate(exdate.getDate() + exdays);
+			var cookieValue = escape(value)
+					+ ((exdays == null) ? "" : "; expires="
+							+ exdate.toGMTString());
+			document.cookie = cookieName + "=" + cookieValue;
+		}
+		function getCookie(cookieName) {
+			cookieName = cookieName + '=';
+			var cookieData = document.cookie;
+			var start = cookieData.indexOf(cookieName);
+			var cookieValue = '';
+			if (start != -1) {
+				start += cookieName.length;
+				var end = cookieData.indexOf(';', start);
+				if (end == -1)
+					end = cookieData.length;
+				cookieValue = cookieData.substring(start, end);
+			}
+			return unescape(cookieValue);
+		}
+		function deleteCookie(cookieName) {
+			var expireDate = new Date();
+			expireDate.setDate(expireDate.getDate() - 1);
+			document.cookie = cookieName + "= " + "; expires="
+					+ expireDate.toGMTString();
+		}
+	</script>
+</body>
+</html>

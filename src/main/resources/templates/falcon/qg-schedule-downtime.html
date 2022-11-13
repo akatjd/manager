@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html id="html-id" lang="en-US" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- ===============================================-->
+<!--    Document Title-->
+<!-- ===============================================-->
+<title>Qg | Manager</title>
+
+
+<!-- ===============================================-->
+<!--    Favicons-->
+<!-- ===============================================-->
+<!-- <link rel="apple-touch-icon" sizes="180x180" -->
+<!-- 	href="/falcon/assets/img/favicons/apple-touch-icon.png"> -->
+<!-- <link rel="icon" type="image/png" sizes="32x32" -->
+<!-- 	href="/falcon/assets/img/favicons/favicon-32x32.png"> -->
+<!-- <link rel="icon" type="image/png" sizes="16x16" -->
+<!-- 	href="/falcon/assets/img/favicons/favicon-16x16.png"> -->
+	<link rel="icon" type="image/png" sizes="16x16"
+	href="../falcon/assets/img/favicons/img-qg-icon.ico">
+<!-- <link rel="shortcut icon" type="image/x-icon" -->
+<!-- 	href="/falcon/assets/img/favicons/favicon.ico"> -->
+<!-- <link rel="manifest" href="/falcon/assets/img/favicons/manifest.json"> -->
+<!-- <meta name="msapplication-TileImage" -->
+<!-- 	content="/falcon/assets/img/favicons/mstile-150x150.png"> -->
+<meta name="theme-color" content="#ffffff">
+<script src="/falcon/assets/js/config.js"></script>
+<script src="/falcon/vendors/overlayscrollbars/OverlayScrollbars.min.js"></script>
+
+
+<!-- ===============================================-->
+<!--    Stylesheets-->
+<!-- ===============================================-->
+<!-- AX5 grid -->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/ax5ui-grid-master/dist/ax5grid.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
+	rel="stylesheet">
+<link href="/falcon/vendors/overlayscrollbars/OverlayScrollbars.min.css"
+	rel="stylesheet">
+<link href="/falcon/assets/css/theme-rtl.min.css" rel="stylesheet"
+	id="style-rtl">
+<link href="/falcon/assets/css/theme.min.css" rel="stylesheet"
+	id="style-default">
+<link href="/falcon/assets/css/user-rtl.min.css" rel="stylesheet"
+	id="user-style-rtl">
+<link href="/falcon/assets/css/user.min.css" rel="stylesheet"
+	id="user-style-default">
+<link rel="stylesheet" href="/falcon/vendors/bootstrap-icons-1.4.0/font/bootstrap-icons.css" />
+
+<!-- flatpickr -->
+<link href="/falcon/vendors/flatpickr/flatpickr.min.css" rel="stylesheet" />
+
+<!-- sweetalert -->
+<link rel="stylesheet" href="/vendor/sweetalert2-master/sweetalert2.min.css">
+
+<!-- bootstrap toggle -->
+<link rel="stylesheet" href="/vendor/bootstrap-toggle-master/css/bootstrap-toggle.min.css">
+
+<script>
+	var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+	if (isRTL) {
+		var linkDefault = document.getElementById('style-default');
+		var userLinkDefault = document.getElementById('user-style-default');
+		linkDefault.setAttribute('disabled', true);
+		userLinkDefault.setAttribute('disabled', true);
+		document.querySelector('html').setAttribute('dir', 'rtl');
+	} else {
+		var linkRTL = document.getElementById('style-rtl');
+		var userLinkRTL = document.getElementById('user-style-rtl');
+		linkRTL.setAttribute('disabled', true);
+		userLinkRTL.setAttribute('disabled', true);
+	}
+</script>
+<style type="text/css">
+.grid-cell-white{
+    background: none !important;
+    color: black;
+}
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td [data-ax5grid-cellHolder] {
+	font-size: 15px;
+}
+
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="body"] [data-ax5grid-panel] table tr td [data-ax5grid-cellHolder] {
+	font-size: 15px;
+}
+</style>
+</head>
+
+<body>
+
+	<!-- ===============================================-->
+	<!--    Main Content-->
+	<!-- ===============================================-->
+
+	<main class="main" id="top">
+		<div class="container" data-layout="container">
+			<script>
+				var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+				if (isFluid) {
+					var container = document.querySelector('[data-layout]');
+					container.classList.remove('container');
+					container.classList.add('container-fluid');
+				}
+			</script>
+
+			<!-- ===============================================-->
+			<!--    Sidebar Content start-->
+			<!-- ===============================================-->
+
+			<div th:replace="fragments/fragment-falcon-sidebar.html :: sidebar"></div>
+
+			<!-- ===============================================-->
+			<!--    Sidebar Content end-->
+			<!-- ===============================================-->
+
+			<div class="content">
+
+				<!-- ===============================================-->
+				<!--    Header Content start-->
+				<!-- ===============================================-->
+				
+				<nav th:replace="fragments/fragment-falcon-header.html :: header"></nav>
+				<div th:replace="fragments/fragment-common.html :: common"></div>
+
+				<!-- ===============================================-->
+				<!--    Header Content end-->
+				<!-- ===============================================-->
+
+				<!-- ===============================================-->
+				<!--    Body Content start-->
+				<!-- ===============================================-->
+				
+				<div class="card mb-3">
+					<div class="card-header">
+						<div class="row flex-between-end">
+							<div class="col-auto align-self-center">
+								<h2 class="mb-0" id="notification2222">
+									비가동 스케줄<a class="anchorjs-link " style="padding-left: 0.375em;"></a>
+								</h2>
+							</div>
+						</div>
+					</div>
+					<div class="card-body bg-light">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-6">
+									<div id="liveAlertPlaceholder"></div>
+                                   	<div class="input-group mb-1">
+                                   		<select class="btn btn-secondary dropdown-toggle" id="selFactory" style="border-bottom-right-radius: 0px;border-top-right-radius: 0px;margin-right: 1px;width:200px;">
+		                                    <option th:each="f: ${factoryList}" th:value="${f.factoryId}" th:text="${f.factoryName}"></option>
+		                                </select>
+										<button class="btn btn-dark" type="button"
+											onclick="searchDowntimeSchedulePolicyList()" id="liveAlertBtn">
+											<i class="fa fa-search"></i>
+											<span>조회</span>
+										</button>
+                                    </div>
+                                </div>
+                                
+								<div class="col-lg-6">
+			                        <div class="float-end">
+			                            <button class="btn btn-primary" onclick="addDowntimeSchedule();">등록</button>
+			                        </div>
+			                    </div>
+
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<div data-ax5grid="adminDowntimeSchedule-grid"
+										data-ax5grid-config='{name : adminDowntimeScheduleGrid}'
+										style="height: 600px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ===============================================-->
+				<!--    Body Content end-->
+				<!-- ===============================================-->
+				
+				<!-- ===============================================-->
+				<!--   Modal Content start-->
+				<!-- ===============================================-->
+				
+				<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-hidden="true">
+			    <div class="modal-dialog modal-lg">
+			        <div class="modal-content border-0">
+			        	<div class="position-absolute top-0 end-0 mt-3 me-3 z-index-1">
+							<button
+								class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base"
+								data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+			            <div class="color-line"></div>
+			            <div class="modal-header">
+			                <h4 id="formTitle" class="modal-title">스케줄 정책 추가</h4>
+			            </div>
+			            <div id="scheduleModalBody1">
+			                <div class="modal-body" id="scheduleModalBody2">
+			                    <form name="simpleForm" novalidate id="simpleForm" action="#" method="post">
+			                        <div class="row">
+			                            <div class="col-lg-3 text-center">
+			                                <i class="pe-7s-clock  fa-5x text-muted"></i>
+			                                <p class="small m-t-md"></p>
+			                                <h3>스케줄 정책</h3>
+			                                <p class="small m-t-md"></p>
+			                                <label class="checkbox-inline">
+			                                    <div class="form-check form-check-inline">
+												  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="scheduleUseYn1" value="y" checked>
+												  <label class="form-check-label" for="scheduleUseYn1">사용</label>
+												</div>
+												<div class="form-check form-check-inline">
+												  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="scheduleUseYn2" value="n">
+												  <label class="form-check-label" for="scheduleUseYn2">미사용</label>
+												</div>
+			                                    
+			                                </label>
+			                            </div>
+			                            <div class="col-lg-9">
+			                                <div class="row">
+			                                    <div class="form-group col-lg-6">
+			                                        <label>스케줄 번호</label>
+			                                        <input type="text" value="" autocomplete="off" id="policyId" name="policyId" class="form-control" required="required" placeholder="자동 입력 입니다." readonly="readonly">
+			                                    </div>
+			                                    <div class="form-group col-lg-6">
+			                                        <label>공장명</label>
+			                                        <select class="form-control" id="factoryId" name="factory.factoryId">
+			                                            <option value="">공장을 선택해 주세요.</option>
+			                                            <option th:each="factory : ${factoryList}" th:value="${factory.factoryId}"
+			                                                    th:text="${factory.factoryName}"></option>
+			                                        </select>
+			                                    </div>
+			                                </div>
+			                                <div class="row">
+			                                    <div class="form-group col-lg-6">
+			                                        <label>스케줄명</label>
+			                                        <input type="" value="" autocomplete="off" id="policyName" name="policyName" class="form-control" required="required" placeholder="스케쥴 명을 입력해 주세요.">
+			                                    </div>
+			                                    <div class="form-group col-lg-6" id="selDay">
+													<label>무인가공</label>
+													<div>
+														<div class="form-check form-check-inline">
+														  <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="downtimeScheduleUseYn1" value="y" checked>
+														  <label class="form-check-label" for="downtimeScehduleUserYn1" checked>사용</label>
+														</div>
+														<div class="form-check form-check-inline">
+														  <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="downtimeScheduleUseYn2" value="n">
+														  <label class="form-check-label" for="downtimeScehduleUserYn2">미사용</label>
+														</div>
+													</div>
+			                                    </div>
+			                                </div>
+			                                <div class="row">
+			                                	<div class="form-group col-lg-6" id="selDay">
+													<label>주, 야간 설정</label>
+													<div>
+														<div class="form-check form-check-inline">
+														  <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="dayCheck" value="day" checked>
+														  <label class="form-check-label" for="dayCheck" checked>주간</label>
+														</div>
+														<div class="form-check form-check-inline">
+														  <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="nightCheck" value="night">
+														  <label class="form-check-label" for="nightCheck">야간</label>
+														</div>
+													</div>
+			                                    </div>
+			                                </div>
+			                                <div class="row">
+			                                    <div class="form-group col-lg-12" style="margin-bottom: 0px" id="fDay">
+			                                        <div class="alert alert-warning" role="alert">
+			                                            <div class="row">
+			                                                <div class="form-group col-lg-6">
+			                                                <input type="hidden" id="startWorkTime" name="startWorkTime" value=""/>
+			                                                    <label>시작시간</label>
+			                                                    <div class="input-group">
+			                                                        <select id="startHour" class="form-select w-auto" title="시간을 선택 하세요.">
+			                                                        </select>
+				                                                    <span class="input-group-text" style="width: 40px;padding-left: 11px;">시</span>
+				                                                    <select id="startMin" class="form-select w-auto" title="분을 선택 하세요.">
+				                                                        </select>
+				                                                    <span class="input-group-text" style="width: 40px;padding-left: 11px;">분</span>
+			                                                    </div>
+			                                                </div>
+			                                                <div class="form-group col-lg-6">
+			                                                <input type="hidden" id="endWorkTime" name="endWorkTime" value=""/>
+			                                                    <label>종료시간</label>
+			                                                    <div class="input-group">
+			                                                        <select id="endHour" class="form-select form-select-sm w-auto" title="시간을 선택 하세요.">
+			                                                        </select>
+			                                                    <span class="input-group-text text-wrap" style="width: 40px;padding-left: 11px;">시</span>
+			                                                    <select id="endMin" class="form-select w-auto" title="분을 선택 하세요.">
+			                                                        </select>
+			                                                    <span class="input-group-text" style="width: 40px;padding-left: 11px;">분</span>
+			                                                    </div>
+			                                                </div>
+			                                            </div>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </form>
+			                </div>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" class="btn btn-primary" onclick="saveDowntimeSchedule()">등록</button>
+			                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">닫기</button>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+				
+				<!-- ===============================================-->
+				<!--   Modal Content end-->
+				<!-- ===============================================-->
+				
+				<!-- ===============================================-->
+				<!--    Footer Content start-->
+				<!-- ===============================================-->
+
+				<div th:replace="fragments/fragment-falcon-footer.html :: footer"></div>
+
+				<!-- ===============================================-->
+				<!--    Footer Content end-->
+				<!-- ===============================================-->
+
+			</div>
+		</div>
+	</main>
+
+	<!-- ===============================================-->
+	<!--    End of Main Content-->
+	<!-- ===============================================-->
+
+	<!-- ===============================================-->
+	<!--    Customize Content start-->
+	<!-- ===============================================-->
+
+<!-- 	<div th:replace="fragments/fragment-falcon-customize.html :: customize"></div> -->
+
+	<!-- ===============================================-->
+	<!--    Customize Content end-->
+	<!-- ===============================================-->
+
+	<!-- ===============================================-->
+	<!--    JavaScripts-->
+	<!-- ===============================================-->
+	<script src="/falcon/vendors/popper/popper.min.js"></script>
+	<script src="/falcon/vendors/bootstrap/bootstrap.min.js"></script>
+	<script src="/falcon/vendors/anchorjs/anchor.min.js"></script>
+	<script src="/falcon/vendors/is/is.min.js"></script>
+	<script src="/falcon/vendors/fontawesome/all.min.js"></script>
+	<script src="/falcon/vendors/lodash/lodash.min.js"></script>
+	
+	<!-- sweetalert -->
+	<script src="/vendor/sweetalert2-master/sweetalert2.js"></script>
+	
+	<script src="/vendor/jquery/dist/jquery.min.js"></script>
+	
+	<!-- jquery validation -->
+	<script src="/vendor/jquery-validation-1.19.3/dist/jquery.validate.min.js"></script>
+	
+	<!-- bootstrap toggle -->
+	<script src="/vendor/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>
+	
+	<script type="text/javascript"
+		src="/vendor/ax5core-master/dist/ax5core.min.js"></script>
+	<script type="text/javascript"
+		src="/vendor/ax5ui-grid-master/dist/ax5grid.min.js"></script>
+	
+	<!-- flatpickr -->
+	<script src="/falcon/assets/js/flatpickr.js"></script>
+	
+	<script
+		src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+	<script src="/falcon/vendors/list.js/list.min.js"></script>
+	<script src="/falcon/assets/js/theme.js"></script>
+	
+	<script src="/scripts/jquery.i18n.properties.js"></script>
+	<script src="/scripts/qg-schedule-downtime.js"></script>
+	<script th:inline="javascript">
+	    var adminSchedulPolicys = /*[[${adminSchedulPolicys}]]*/[];
+	    var hour = [];
+	    var min = [];
+	    var value = "";
+	
+	    for (var i = 0; i <= 24; i++) {
+	        if (i < 10) {
+	            value = "0" + i;
+	            text = "0" + i;
+	        } else {
+	            value = i;
+	            text = i;
+	        }
+	        hour[i] = "<option style='width:50px;' value=" + value + ">" + text + "</option>";
+	    }
+	    value = "";
+	    for (var i = 0; i < 60; i++) {
+	        if (i < 10) {
+	            value = "0" + i;
+	            text = "0" + i;
+	        } else {
+	            value = i;
+	            text = i;
+	        }
+	        min[i] = "<option value=" + value + ">" + text + "</option>";
+	    }
+	    $("#fDay #startHour").append(hour.join(""));
+	    $("#fDay #startMin").append(min.join(""));
+	    $("#fDay #endHour").append(hour.join(""));
+	    $("#fDay #endMin").append(min.join(""));
+	    $("#fNight #startHour").append(hour.join(""));
+	    $("#fNight #startMin").append(min.join(""));
+	    $("#fNight #endHour").append(hour.join(""));
+	    $("#fNight #endMin").append(min.join(""));
+	    
+	    var originalModal = $('#scheduleModalBody2').clone();
+	</script>
+</body>
+</html>

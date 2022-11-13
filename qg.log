@@ -1,0 +1,229 @@
+2022-10-13 11:14:38 INFO  k.c.qgmyunghwa.QgmyunghwaApplication - Starting QgmyunghwaApplication using Java 1.8.0_211 on DESKTOP-7NKSLEO with PID 21728 (C:\Users\KMS\IdeaProjects\myunghwa\target\classes started by KMS in C:\Users\KMS\IdeaProjects\myunghwa)
+2022-10-13 11:14:38 INFO  k.c.qgmyunghwa.QgmyunghwaApplication - No active profile set, falling back to default profiles: default
+2022-10-13 11:14:38 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-13 11:14:38 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-13 11:14:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-13 11:14:40 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 329 ms. Found 27 JPA repository interfaces.
+2022-10-13 11:14:41 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)
+2022-10-13 11:14:41 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8090"]
+2022-10-13 11:14:41 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-10-13 11:14:41 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.52]
+2022-10-13 11:14:41 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-10-13 11:14:41 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2965 ms
+2022-10-13 11:14:41 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-10-13 11:14:43 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-10-13 11:14:43 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-13 11:14:43 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-10-13 11:14:43 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-13 11:14:43 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-10-13 11:14:45 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-13 11:14:45 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/scripts/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/styles/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/images/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/vendor/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/icons/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/fonts/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/favicon.ico'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/external/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/configuration/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/focus/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/falcon/**'] with []
+2022-10-13 11:15:08 INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@154eac56, org.springframework.security.web.context.SecurityContextPersistenceFilter@189b68e8, org.springframework.security.web.header.HeaderWriterFilter@1baaa5ff, org.springframework.security.web.authentication.logout.LogoutFilter@686614e3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@ab91262, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8201d57, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71464562, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5726869f, org.springframework.security.web.session.SessionManagementFilter@2ae81629, org.springframework.security.web.access.ExceptionTranslationFilter@4edd87ac, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@25c956b7]
+2022-10-13 11:15:08 INFO  o.s.aop.framework.CglibAopProxy - Unable to proxy interface-implementing method [public final void org.springframework.web.filter.GenericFilterBean.init(javax.servlet.FilterConfig) throws javax.servlet.ServletException] because it is marked as final: Consider using interface-based JDK proxies instead!
+2022-10-13 11:15:08 INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2022-10-13 11:15:09 INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2022-10-13 11:15:09 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8090"]
+2022-10-13 11:15:09 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8090 (http) with context path ''
+2022-10-13 11:15:09 INFO  k.c.qgmyunghwa.QgmyunghwaApplication - Started QgmyunghwaApplication in 31.436 seconds (JVM running for 33.277)
+2022-10-13 11:18:27 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-13 11:18:27 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-10-13 11:18:27 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-10-13 11:18:34 ERROR o.s.s.w.a.UsernamePasswordAuthenticationFilter - An internal error occurred while trying to authenticate the user.
+org.springframework.security.authentication.InternalAuthenticationServiceException: 1131
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:108)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:133)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:201)
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:85)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:222)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.security.web.FilterChainProxy$$FastClassBySpringCGLIB$$f101c706.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:89)
+	at kr.co.manager.exception.FilterChainProxyAdvice.handleRequestRejectedException(FilterChainProxyAdvice.java:18)
+	at sun.reflect.GeneratedMethodAccessor106.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:634)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:624)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:72)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
+	at org.springframework.security.web.FilterChainProxy$$EnhancerBySpringCGLIB$$f7e5bc96.doFilter(<generated>)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.security.authentication.BadCredentialsException: 1131
+	at kr.co.manager.security.UserDetailsServiceImpl.loadUserByUsername(UserDetailsServiceImpl.java:58)
+	at kr.co.manager.security.UserDetailsServiceImpl$$FastClassBySpringCGLIB$$dd185f5f.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at kr.co.manager.security.UserDetailsServiceImpl$$EnhancerBySpringCGLIB$$1b0fd45e.loadUserByUsername(<generated>)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:93)
+	... 74 common frames omitted
+2022-10-13 11:18:41 ERROR o.s.s.w.a.UsernamePasswordAuthenticationFilter - An internal error occurred while trying to authenticate the user.
+org.springframework.security.authentication.InternalAuthenticationServiceException: 1131
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:108)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:133)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:201)
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:85)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:222)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.security.web.FilterChainProxy$$FastClassBySpringCGLIB$$f101c706.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:89)
+	at kr.co.manager.exception.FilterChainProxyAdvice.handleRequestRejectedException(FilterChainProxyAdvice.java:18)
+	at sun.reflect.GeneratedMethodAccessor106.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:634)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:624)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:72)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692)
+	at org.springframework.security.web.FilterChainProxy$$EnhancerBySpringCGLIB$$f7e5bc96.doFilter(<generated>)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.security.authentication.BadCredentialsException: 1131
+	at kr.co.manager.security.UserDetailsServiceImpl.loadUserByUsername(UserDetailsServiceImpl.java:58)
+	at kr.co.manager.security.UserDetailsServiceImpl$$FastClassBySpringCGLIB$$dd185f5f.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at kr.co.manager.security.UserDetailsServiceImpl$$EnhancerBySpringCGLIB$$1b0fd45e.loadUserByUsername(<generated>)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:93)
+	... 74 common frames omitted
+2022-10-13 11:20:23 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 11:20:34 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 11:22:57 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 11:23:00 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 11:23:01 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 11:23:05 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 11:23:08 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 11:23:08 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 11:23:08 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 11:23:11 INFO  k.c.q.controller.MainController - account :: Account [accountId=kms@tachyontech.co.kr, password=$2a$10$Qdwh4Q67jraFhBDYIrpGOOfRgHGuhobHYMa2O4hI4gztEFVVVARA., role=ROLE_ADMIN, userName=김민성, department=개발팀, allowFactory=1, mainPageUrl=null, approvalStatus=approval]
+2022-10-13 12:17:08 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-13 12:17:08 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-10-13 12:17:08 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

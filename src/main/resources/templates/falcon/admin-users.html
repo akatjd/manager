@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- ===============================================-->
+<!--    Document Title-->
+<!-- ===============================================-->
+<title>Qg | Manager</title>
+
+
+<!-- ===============================================-->
+<!--    Favicons-->
+<!-- ===============================================-->
+<!-- <link rel="apple-touch-icon" sizes="180x180" -->
+<!-- 	href="../falcon/assets/img/favicons/apple-touch-icon.png"> -->
+<!-- <link rel="icon" type="image/png" sizes="32x32" -->
+<!-- 	href="../falcon/assets/img/favicons/favicon-32x32.png"> -->
+<!-- <link rel="icon" type="image/png" sizes="16x16" -->
+<!-- 	href="../falcon/assets/img/favicons/favicon-16x16.png"> -->
+<link rel="icon" type="image/png" sizes="16x16"
+	href="../falcon/assets/img/favicons/img-qg-icon.ico">
+<!-- <link rel="shortcut icon" type="image/x-icon" -->
+<!-- 	href="../falcon/assets/img/favicons/favicon.ico"> -->
+<!-- <link rel="manifest" href="../falcon/assets/img/favicons/manifest.json"> -->
+<meta name="msapplication-TileImage"
+	content="../falcon/assets/img/favicons/mstile-150x150.png">
+<meta name="theme-color" content="#ffffff">
+<script src="../falcon/assets/js/config.js"></script>
+<script src="../falcon/vendors/overlayscrollbars/OverlayScrollbars.min.js"></script>
+
+
+<!-- ===============================================-->
+<!--    Stylesheets-->
+<!-- ===============================================-->
+
+<!-- AX5 grid -->
+<link rel="stylesheet" type="text/css"
+	href="../vendor/ax5ui-grid-master/dist/ax5grid.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
+	rel="stylesheet">
+<link href="../falcon/vendors/overlayscrollbars/OverlayScrollbars.min.css"
+	rel="stylesheet">
+<link href="../falcon/assets/css/theme-rtl.min.css" rel="stylesheet"
+	id="style-rtl">
+<link href="../falcon/assets/css/theme.min.css" rel="stylesheet"
+	id="style-default">
+<link href="../falcon/assets/css/user-rtl.min.css" rel="stylesheet"
+	id="user-style-rtl">
+<link href="../falcon/assets/css/user.min.css" rel="stylesheet"
+	id="user-style-default">
+<link rel="stylesheet"
+	href="../falcon/vendors/bootstrap-icons-1.4.0/font/bootstrap-icons.css" />
+	
+<!-- sweetalert -->
+<link rel="stylesheet" type="text/css" href="../styles/sweetalert2.css">
+
+<script>
+	var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+	if (isRTL) {
+		var linkDefault = document.getElementById('style-default');
+		var userLinkDefault = document.getElementById('user-style-default');
+		linkDefault.setAttribute('disabled', true);
+		userLinkDefault.setAttribute('disabled', true);
+		document.querySelector('html').setAttribute('dir', 'rtl');
+	} else {
+		var linkRTL = document.getElementById('style-rtl');
+		var userLinkRTL = document.getElementById('user-style-rtl');
+		linkRTL.setAttribute('disabled', true);
+		userLinkRTL.setAttribute('disabled', true);
+	}
+</script>
+</head>
+
+<body>
+
+	<!-- ===============================================-->
+	<!--    Main Content-->
+	<!-- ===============================================-->
+
+	<main class="main" id="top">
+		<div class="container" data-layout="container">
+			<script>
+				var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+				if (isFluid) {
+					var container = document.querySelector('[data-layout]');
+					container.classList.remove('container');
+					container.classList.add('container-fluid');
+				}
+			</script>
+
+			<!-- ===============================================-->
+			<!--    Sidebar Content start-->
+			<!-- ===============================================-->
+
+			<div th:replace="fragments/fragment-falcon-sidebar.html :: sidebar"></div>
+
+			<!-- ===============================================-->
+			<!--    Sidebar Content end-->
+			<!-- ===============================================-->
+
+			<div class="content">
+
+				<!-- ===============================================-->
+				<!--    Header Content start-->
+				<!-- ===============================================-->
+
+				<nav th:replace="fragments/fragment-falcon-header.html :: header"></nav>
+
+				<!-- ===============================================-->
+				<!--    Header Content end-->
+				<!-- ===============================================-->
+
+				<!-- ===============================================-->
+				<!--    Body Content start-->
+				<!-- ===============================================-->
+
+				<div class="card mb-3">
+					<div class="card-header">
+						<div class="row flex-between-end">
+							<div class="col-auto align-self-center">
+								<h2 class="mb-0" id="notification">
+									관리자 - 사용자 관리<a class="anchorjs-link " style="padding-left: 0.375em;"></a>
+								</h2>
+							</div>
+						</div>
+					</div>
+					<div class="card-body bg-light">
+						<div class="row g-2">
+		                    <div class="col-lg-4">
+								<div class="input-group mb-1">
+									<span class="input-group-text">공장</span> 
+									<select class="form-select" id="selFactory" onchange="searchMemberList()">
+		                                <option value="">-전체-</option>
+		                                <option th:each="f: ${factoryList}" 
+		                                        th:value="${f.factoryId}" 
+		                                        th:text="${f.factoryName}"></option>
+		                            </select>
+									<button class="btn btn-secondary" type="button"
+										onclick="searchMachineList()">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+							<div class="col-lg-8">
+		                        <div class="d-flex flex-row-reverse">
+		                            <button class="btn btn-primary" onclick="addMember()" data-bs-toggle="modal" data-bs-target="#editModal">사용자 등록</button>
+		                        </div>
+		                    </div>
+						</div>
+						<div class="row">
+		                    <div class="col-lg-12">
+		                        <div data-ax5grid="members-grid" data-ax5grid-config='{name:"members grid"}' style="height: 600px;"></div>
+		                    </div>
+		                </div>
+					</div>
+				</div>
+				
+			<!-- ===============================================-->
+			<!--    Body Content end-->
+			<!-- ===============================================-->
+
+			<!-- ===============================================-->
+			<!--    Footer Content start-->
+			<!-- ===============================================-->
+
+			<div th:replace="fragments/fragment-falcon-footer.html :: footer"></div>
+
+			<!-- ===============================================-->
+			<!--    Footer Content end-->
+			<!-- ===============================================-->
+			</div>
+		</div>
+	</main>
+	
+	<div class="modal fade" id="editModal" tabindex="-1"
+	     role="dialog" aria-hidden="true">
+	    <div class="modal-dialog modal-lg">
+	        <div class="modal-content">
+	            <div class="color-line"></div>
+	            <div class="modal-header">
+	                <h4 id="formTitle" class="modal-title">사용자 등록하기</h4>
+	            </div>
+	            <div class="modal-body" id="bsModalBd">
+	                <div id="bsModalBody">
+	                    <form name="simpleForm" novalidate id="simpleForm" action="#" method="post">
+	                        <div class="row">
+<!-- 	                            <div class="col-lg-3 text-center"> -->
+<!-- 	                                <i class="pe-7s-user fa-5x text-muted"></i> -->
+<!-- 	                                <p class="small m-t-md"> -->
+<!-- 	                                    <h3>사용자 정보</h3> -->
+<!-- 	                                </p> -->
+<!-- 	                            </div> -->
+	                            <div class="col-lg-12 mx-3">
+	                                <div class="row">
+	                                    <div class="row">
+	                                        <div class="form-group col-lg-6">
+	                                            <label>사용자 ID (*)</label>
+	                                            <input type="text" value="" autocomplete="off" id="accountId" name="accountId"
+	                                                   class="form-control" required="required" placeholder="사용자 ID">
+	                                        </div>
+	                                        <div class="form-group col-lg-6">
+	                                            <label>사용자 이름 (*)</label>
+	                                            <input type="text" value="" autocomplete="off" id="userName" name="userName"
+	                                                   required="required" class="form-control" placeholder="사용자 이름">
+	                                        </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="form-group col-lg-6">
+	                                            <label>비밀번호 (*)</label>
+	                                            <input type="password" autocomplete="new-password" value="" id="password"
+	                                                   required="required" name="password" class="form-control"
+	                                                   placeholder="******">
+	                                        </div>
+	                                        <div class="form-group col-lg-6">
+	                                            <label>메인화면 URL <small>(*재접속시 적용)</small></label>
+	                                            <select class="form-select" name="mainPageUrl" id="mainPageUrl">
+	                                                <option value="">기본화면</option>
+<!-- 	                                                <option value="area_dashboard">지역별 공장현황</option> -->
+<!-- 	                                                <option value="area_dashboard2">지역별 공장현황(작게)</option> -->
+	    <!--                                             <div sec:authorize="hasRole('ROLE_ADMIN')"> -->
+	    <!--                                             <option value="tool_dashboard">기계별 공구현황</option> -->
+	    <!--                                             <option value="vue_dashboard">뷰 개발중</option> -->
+	    <!--                                             </div> -->
+	                                            </select>
+	                                        </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="form-group col-lg-6">
+	                                            <label>연결 공장</label>
+	                                            <select class="form-select" id="allowFactory" name="allowFactory">
+	                                                <option disabled="" value="">공장을 선택해 주세요</option>
+	                                                <option th:each="factory : ${factorys}" th:value="${factory.factoryId}"
+	                                                        th:text=" ${factory.factoryName}"></option>
+	                                            </select>
+	                                        </div>
+	                                        <div class="form-group col-lg-6">
+	                                            <label>부서명</label>
+	                                            <input type="text" autocomplete="off" value="" id="department" name="department"
+	                                                   class="form-control" placeholder="부서명">
+	                                        </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="form-group col-lg-6">
+	                                            <label>권한 (*)</label>
+	                                            <select class="form-select" name="role" id="role">
+	                                                <option sec:authorize="hasRole('ROLE_ADMIN')" value="ROLE_ADMIN">관리자</option>
+	                                                <option value="ROLE_MANAGER">매니저</option>
+	                                                <option value="ROLE_USER">대쉬보드 사용자</option>
+	                                                <option value="ROLE_MEMBER">일반 사용자</option>
+	                                            </select>
+	                                        </div>
+	                                        <div class="form-group col-lg-6">
+	                                            <label>승인</label>
+	                                            <select class="form-select" name="approvalStatus" id="approvalStatus">
+	                                                <option value="req">미승인</option>
+	                                                <option value="approval">승인</option>
+	                                            </select>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary" id="submitBtn" onclick="submitForm()">등록</button>
+	                <button type="button" class="btn btn-default" data-bs-dismiss="modal">닫기</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- ===============================================-->
+	<!--    End of Main Content-->
+	<!-- ===============================================-->
+
+	<!-- ===============================================-->
+	<!--    Customize Content start-->
+	<!-- ===============================================-->
+
+<!-- 	<div th:replace="fragments/fragment-falcon-customize.html :: customize"></div> -->
+
+	<!-- ===============================================-->
+	<!--    Customize Content end-->
+	<!-- ===============================================-->
+
+	<!-- ===============================================-->
+	<!--    JavaScripts-->
+	<!-- ===============================================-->
+	
+	<script src="../falcon/vendors/popper/popper.min.js"></script>
+	<script src="../falcon/vendors/bootstrap/bootstrap.min.js"></script>
+	<script src="../falcon/vendors/anchorjs/anchor.min.js"></script>
+	<script src="../falcon/vendors/is/is.min.js"></script>
+	<script src="../falcon/vendors/echarts/echarts.min.js"></script>
+	<script src="../falcon/vendors/fontawesome/all.min.js"></script>
+	<script src="../falcon/vendors/lodash/lodash.min.js"></script>
+	<script
+		src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+	<script src="../falcon/vendors/list.js/list.min.js"></script>
+	<script src="../falcon/assets/js/theme.js"></script>
+	
+	<!-- sweetalert -->
+	<script src="../scripts/sweetalert2.min.js"></script>
+	
+	<!-- ax5 -->
+	<script type="text/javascript"
+		src="../vendor/ax5core-master/dist/ax5core.min.js"></script>
+	<script type="text/javascript"
+		src="../vendor/ax5ui-grid-master/dist/ax5grid.min.js"></script>
+	
+	<script src="../vendor/jquery/dist/jquery.min.js"></script>
+	<script src="../scripts/jquery.i18n.properties.js"></script>
+	<script src="../scripts/jquery.validate.js"></script>
+	
+	<!-- 사용자 관리 js -->
+	<script src="../scripts/admin-users.js"></script>
+
+	<script th:inline="javascript" type="text/javascript">
+	    var members = /*[[${members}]]*/[];
+	    var sessionAccountId = /*[[${session == null} ? null : ${session.account.accountId}]]*/'id';
+	    var originalBasicModal = $('#editModal #bsModalBody').clone();
+	</script>
+
+</body>
+
+</html>

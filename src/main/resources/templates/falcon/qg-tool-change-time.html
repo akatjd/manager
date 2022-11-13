@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html id="html-id" lang="en-US" dir="ltr"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- ===============================================-->
+<!--    Document Title-->
+<!-- ===============================================-->
+<title>Qg | Manager</title>
+
+<!-- ===============================================-->
+<!--    Favicons-->
+<!-- ===============================================-->
+<!-- <link rel="apple-touch-icon" sizes="180x180" -->
+<!-- 	href="/falcon/assets/img/favicons/apple-touch-icon.png"> -->
+<!-- <link rel="icon" type="image/png" sizes="32x32" -->
+<!-- 	href="/falcon/assets/img/favicons/favicon-32x32.png"> -->
+<!-- <link rel="icon" type="image/png" sizes="16x16" -->
+<!-- 	href="/falcon/assets/img/favicons/favicon-16x16.png"> -->
+<link rel="icon" type="image/png" sizes="16x16"
+	href="../falcon/assets/img/favicons/img-qg-icon.ico">
+<!-- <link rel="shortcut icon" type="image/x-icon" -->
+<!-- 	href="/falcon/assets/img/favicons/favicon.ico"> -->
+<!-- <link rel="manifest" href="/falcon/assets/img/favicons/manifest.json"> -->
+<!-- <meta name="msapplication-TileImage" -->
+<!-- 	content="/falcon/assets/img/favicons/mstile-150x150.png"> -->
+<meta name="theme-color" content="#ffffff">
+<script src="/falcon/assets/js/config.js"></script>
+<script src="/falcon/vendors/overlayscrollbars/OverlayScrollbars.min.js"></script>
+
+<!-- ===============================================-->
+<!--    Stylesheets-->
+<!-- ===============================================-->
+
+<!-- AX5 grid -->
+<link rel="stylesheet" type="text/css"
+	href="/vendor/ax5ui-grid-master/dist/ax5grid.css" />
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
+	rel="stylesheet">
+<link href="/falcon/vendors/overlayscrollbars/OverlayScrollbars.min.css"
+	rel="stylesheet">
+<link href="/falcon/assets/css/theme-rtl.min.css" rel="stylesheet"
+	id="style-rtl">
+<link href="/falcon/assets/css/theme.min.css" rel="stylesheet"
+	id="style-default">
+<link href="/falcon/assets/css/user-rtl.min.css" rel="stylesheet"
+	id="user-style-rtl">
+<link href="/falcon/assets/css/user.min.css" rel="stylesheet"
+	id="user-style-default">
+<link rel="stylesheet"
+	href="/falcon/vendors/bootstrap-icons-1.4.0/font/bootstrap-icons.css" />
+
+<!-- flatpickr -->
+<link href="/falcon/vendors/flatpickr/flatpickr.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="/vendor/shortcut-buttons-flatpickr-0.3.1/dist/themes/light.min.css">
+
+<!-- sweetalert -->
+<link rel="stylesheet" type="text/css" href="/styles/sweetalert2.css">
+
+<style>
+.jqstooltip {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.ui-datepicker {
+	z-index: 1151 !important;
+}
+
+.grid-cell-red {
+	background: #e63757;
+	font-weight: bold;
+	color: white;
+}
+
+.grid-cell-yellow {
+	background: #f5803e;
+	font-weight: bold;
+	color: white;
+}
+
+.grid-cell-blue {
+	background: #27bcfd;
+	font-weight: bold;
+	color: white;
+}
+
+.grid-cell-green {
+	background: #00d27a;
+	font-weight: bold;
+	color: white;
+}
+
+.grid-cell-pink {
+	background: #ffa4a4;
+	font-weight: bold;
+	color: white;
+}
+
+.grid-cell-grey {
+	background: #8a8a8c;
+	font-weight: bold;
+	color: white;
+}
+
+.grid-cell-white {
+	background: none !important;
+}
+
+input[id="reflechChk"] {
+	position: relative;
+	bottom: 2px;
+	right: 7px;
+}
+
+.label {
+	z-index: 1 !important;
+}
+
+.highcharts-tooltip-container {
+	background-color: transparent;
+	border: 1 px solid green;
+	opacity: 1;
+	z-index: 9999 !important;
+}
+
+.tooltip {
+	padding: 5px;
+}
+
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td [data-ax5grid-cellHolder]
+	{
+	font-size: 15px;
+}
+
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="body"] [data-ax5grid-panel] table tr td [data-ax5grid-cellHolder]
+	{
+	font-size: 15px;
+	color: black;
+}
+</style>
+
+<script>
+	var isRTL = JSON.parse(localStorage.getItem('isRTL'));
+	if (isRTL) {
+		var linkDefault = document.getElementById('style-default');
+		var userLinkDefault = document.getElementById('user-style-default');
+		linkDefault.setAttribute('disabled', true);
+		userLinkDefault.setAttribute('disabled', true);
+		document.querySelector('html').setAttribute('dir', 'rtl');
+	} else {
+		var linkRTL = document.getElementById('style-rtl');
+		var userLinkRTL = document.getElementById('user-style-rtl');
+		linkRTL.setAttribute('disabled', true);
+		userLinkRTL.setAttribute('disabled', true);
+	}
+</script>
+</head>
+
+<body>
+
+	<!-- ===============================================-->
+	<!--    Main Content-->
+	<!-- ===============================================-->
+
+	<main class="main" id="top">
+		<div class="container" data-layout="container">
+			<script>
+				var isFluid = JSON.parse(localStorage.getItem('isFluid'));
+				if (isFluid) {
+					var container = document.querySelector('[data-layout]');
+					container.classList.remove('container');
+					container.classList.add('container-fluid');
+				}
+			</script>
+
+			<!-- ===============================================-->
+			<!--    Sidebar Content start-->
+			<!-- ===============================================-->
+
+			<div th:replace="fragments/fragment-falcon-sidebar.html :: sidebar"></div>
+
+			<!-- ===============================================-->
+			<!--    Sidebar Content end-->
+			<!-- ===============================================-->
+
+			<div class="content">
+
+				<!-- ===============================================-->
+				<!--    Header Content start-->
+				<!-- ===============================================-->
+
+				<nav th:replace="fragments/fragment-falcon-header.html :: header"></nav>
+				<div th:replace="fragments/fragment-common.html :: common"></div>
+
+				<!-- ===============================================-->
+				<!--    Header Content end-->
+				<!-- ===============================================-->
+
+				<!-- ===============================================-->
+				<!--    Body Content start-->
+				<!-- ===============================================-->
+
+				<div class="card mb-3">
+					<div class="card-header">
+						<div class="row flex-between-end">
+							<div class="col-lg-8">
+								<div class="input-group">
+									<h2 class="mb-3" id="notification2">
+										공구 교환 시간<a class="anchorjs-link "
+											style="padding-left: 0.375em;"></a>
+									</h2>
+								</div>
+							</div>
+							<div class="col-lg-4 float-end">
+								<div class="btn-toolbar float-end" role="toolbar">
+									<div class="btn-group" role="group">
+										<a class="btn btn-secondary"
+											data-grid-control="toolChangeTimeList-grid-export"> <span
+											aria-hidden="true" class="fas fa-save fa-2x"></span><br />
+										<font>Excel출력</font>
+										</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="card-body bg-light">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-12">
+									<div id="liveAlertPlaceholder"></div>
+									<div class="input-group mb-1">
+										<select class="btn btn-secondary dropdown-toggle"
+											id="selFactory" onchange="searchAreaList()"
+											style="width: 200px; margin-right: 1px;">
+											<option th:each="f: ${factoryList}" th:value="${f.factoryId}"
+												th:text="${f.factoryName}"></option>
+										</select> <span class="input-group-text">라인</span> <select
+											class="form-select" id="selArea"
+											onchange="searchMachineList()">
+											<option value="">-All-</option>
+											<option th:each="a: ${areaList}" th:value="${a.areaId}"
+												th:text="${a.areaName}"></option>
+										</select> <span class="input-group-text">설비</span> <select
+											class="form-select" id="selMachine">
+											<option value="">-All-</option>
+											<option th:each="m: ${machineList}" th:value="${m.machineId}"
+												th:text="${m.machineName}"></option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="input-group mb-1">
+										<span class="input-group-text">기간선택</span> <input
+											th:if="${session.startDate} == null"
+											class="form-control datetimepicker" id="startdate"
+											type="text" placeholder="년-월-일"
+											data-options='{"dateFormat":"Y-m-d", "disableMobile":true}'
+											value="" style="text-align: center;" /> <input
+											th:unless="${session.startDate} == null"
+											class="form-control datetimepicker" id="startdate"
+											type="text" placeholder="년-월-일"
+											data-options='{"dateFormat":"Y-m-d", "disableMobile":true}'
+											th:value="${session.startDate}" style="text-align: center;" />
+										<span class="input-group-text">to</span> <input
+											th:if="${session.endDate} == null"
+											class="form-control datetimepicker" id="enddate" type="text"
+											placeholder="년-월-일"
+											data-options='{"dateFormat":"Y-m-d", "disableMobile":true}'
+											value="" style="text-align: center;" /> <input
+											th:unless="${session.endDate} == null"
+											class="form-control datetimepicker" id="enddate" type="text"
+											placeholder="년-월-일"
+											data-options='{"dateFormat":"Y-m-d", "disableMobile":true}'
+											th:value="${session.endDate}" style="text-align: center;" />
+										<span class="input-group-text">최대시간(s)</span> <input
+											id="standardMaxCt" class="form-control" type="number" min="0"
+											placeholder="" value="1000" aria-describedby="addon-wrapping" />
+										<button class="btn btn-secondary" type="button"
+											onclick="searchToolChangeTimeList()" id="liveAlertBtn">
+											<i class="fa fa-search"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-lg-12">
+									<div data-ax5grid="toolChangeTimeList-grid"
+										data-ax5grid-config='{name:"toolChangeTimeListGrid"}'
+										style="height: 600px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ===============================================-->
+				<!--    Body Content end-->
+				<!-- ===============================================-->
+
+				<!-- ===============================================-->
+				<!--   Modal Content start-->
+				<!-- ===============================================-->
+
+				<div class="modal fade" id="myModal" data-bs-keyboard="true"
+					data-bs-backdrop="static" tabindex="-1"
+					aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal-dialog modal-xl mt-6" role="document">
+						<div class="modal-content border-0">
+							<div class="position-absolute top-0 end-0 mt-3 me-3 z-index-1">
+								<button
+									class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base"
+									data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-header">
+								<h4 class="mb-1" id="staticBackdropLabel">공구 교환 시간</h4>
+							</div>
+							<div class="modal-body p-0">
+								<div class="p-4">
+									<div class="row mb-3">
+										<div class="col-lg-12">
+											<div id="selDate"></div>
+											<div data-ax5grid="toolChangeTimeDetailList-grid"
+												data-ax5grid-config='{name:"toolChangeTimeDetailListGrid"}'
+												style="height: 600px;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger"
+									data-bs-dismiss="modal">닫기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal fade" id="bellCurveModal" data-bs-keyboard="true"
+					data-bs-backdrop="static" tabindex="-1"
+					aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal-dialog modal-xl mt-6" role="document">
+						<div class="modal-content border-0">
+							<div class="position-absolute top-0 end-0 mt-3 me-3 z-index-1">
+								<button
+									class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base"
+									data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-header">
+								<h4 class="mb-1" id="staticBackdropLabelBell">분포 차트</h4>
+							</div>
+							<div class="modal-body p-0">
+								<div class="p-4">
+									<div class="row mb-3">
+										<div class="col-lg-12">
+											<div id="selDateBell"></div>
+											<div class="row">
+												<div class="col-lg-6">
+													<span><b>x축 설정&nbsp&nbsp</b></span>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input" type="radio"
+															name="hcOption" id="hcIndexOption" value="optionIndex"
+															onclick="chartXaxisChange('index')"> <label
+															class="form-check-label" for="hcIndexOption">교체순서</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input" type="radio"
+															name="hcOption" id="hcDateOption"
+															onclick="chartXaxisChange('date')" value="optionDate"
+															checked> <label class="form-check-label"
+															for="hcDateOption">교체시간</label>
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="input-group">
+														<span class="input-group-text">y축범위</span><input id="yMin"
+															class="form-control" type="number" min="0" placeholder=""
+															value="0" aria-describedby="addon-wrapping" /> <span
+															class="input-group-text">~</span><input id="yMax"
+															class="form-control" type="number" min="0" placeholder=""
+															value="600" aria-describedby="addon-wrapping" />
+														<button type="button" id="testBtn"
+															class="btn btn-secondary" onclick="changeYaxis()">설정</button>
+													</div>
+												</div>
+											</div>
+											<!-- 											<div id="bellCurveChart"></div> -->
+											<div id="scatterChart"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger"
+									data-bs-dismiss="modal">닫기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- ===============================================-->
+				<!--   Modal Content end-->
+				<!-- ===============================================-->
+
+				<!-- ===============================================-->
+				<!--    Footer Content start-->
+				<!-- ===============================================-->
+
+				<div th:replace="fragments/fragment-falcon-footer.html :: footer"></div>
+
+				<!-- ===============================================-->
+				<!--    Footer Content end-->
+				<!-- ===============================================-->
+
+			</div>
+		</div>
+	</main>
+
+	<!-- ===============================================-->
+	<!--    End of Main Content-->
+	<!-- ===============================================-->
+
+	<!-- ===============================================-->
+	<!--    Customize Content start-->
+	<!-- ===============================================-->
+
+	<!-- 	<div th:replace="fragments/fragment-falcon-customize.html :: customize"></div> -->
+
+	<!-- ===============================================-->
+	<!--    Customize Content end-->
+	<!-- ===============================================-->
+
+	<!-- ===============================================-->
+	<!--    JavaScripts-->
+	<!-- ===============================================-->
+	<script src="/falcon/vendors/popper/popper.min.js"></script>
+	<script src="/falcon/vendors/bootstrap/bootstrap.min.js"></script>
+	<script src="/falcon/vendors/anchorjs/anchor.min.js"></script>
+	<script src="/falcon/vendors/is/is.min.js"></script>
+	<script src="/falcon/vendors/echarts/echarts.min.js"></script>
+	<script src="/falcon/vendors/fontawesome/all.min.js"></script>
+	<script src="/falcon/vendors/lodash/lodash.min.js"></script>
+
+	<script src="/vendor/jquery/dist/jquery.min.js"></script>
+
+	<!-- ax5 grid -->
+	<script type="text/javascript"
+		src="/vendor/ax5core-master/dist/ax5core.min.js"></script>
+	<!-- 	<script type="text/javascript" -->
+	<!-- 		src="/vendor/ax5ui-grid-master/dist/ax5grid.min.js"></script> -->
+	<script type="text/javascript"
+		src="/vendor/ax5ui-grid-master/dist/ax5grid.js"></script>
+
+	<!-- highchart -->
+	<script src="/vendor/Highcharts-6.2.0/code/highcharts.js"></script>
+	<script
+		src="/vendor/Highcharts-6.2.0/code/modules/histogram-bellcurve.js"></script>
+	<script src="/vendor/Highcharts-6.2.0/code/modules/exporting.js"></script>
+	<script src="/vendor/Highcharts-6.2.0/code/modules/export-data.js"></script>
+	<script src="/vendor/Highcharts-6.2.0/code/modules/accessibility.js"></script>
+
+
+	<!-- echart -->
+	<script src="/falcon/vendors/echarts/echarts.min.js"></script>
+	<script src="/falcon/assets/js/echart-example.js"></script>
+	<script src="/falcon/assets/js/echarts-example.js"></script>
+
+	<!-- flatpickr -->
+	<script src="/falcon/assets/js/flatpickr.js"></script>
+	<script
+		src="/vendor/shortcut-buttons-flatpickr-0.3.1/dist/shortcut-buttons-flatpickr.min.js"></script>
+
+	<script
+		src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+	<script src="/falcon/vendors/list.js/list.min.js"></script>
+	<script src="/falcon/assets/js/theme.js"></script>
+
+	<!-- sweetalert -->
+	<script src="/scripts/sweetalert2.min.js"></script>
+
+	<!-- moment -->
+	<script src="/scripts/moment.js"></script>
+
+	<script src="/scripts/jquery.i18n.properties.js"></script>
+	<script src="/scripts/qg-tool-change-time.js"></script>
+
+</body>
+</html>
